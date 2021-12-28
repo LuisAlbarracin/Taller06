@@ -7,6 +7,7 @@ ul.list-group li.active{
   color: #0011ff;
   font-weight: bold;
   font-style: italic;
+  background: #a5abf5;
 }
 
 ul.list-group.list-group-striped li:nth-of-type(odd){
@@ -14,11 +15,11 @@ ul.list-group.list-group-striped li:nth-of-type(odd){
 }
 
 ul.list-group.list-group-striped li:nth-of-type(even){
-  background: #b3b2b2;
+  background: #dfdcdc;
 }
 
-li.list-group.list-group-hover li:hover{
-background: #44d36f;
+ul.list-group.list-group-hover li:hover{
+background: #fcf7b1;
 }
 
 .iconoVerde{
@@ -27,5 +28,5 @@ background: #44d36f;
 }
 
 .textoPequeno{
-  font-size: 11px;
+  font-size: 14px;
 }

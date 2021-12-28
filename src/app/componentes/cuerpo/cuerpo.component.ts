@@ -26,7 +26,8 @@ export class CuerpoComponent implements OnInit {
   // ******* Métodos Obligatorios
 
   public inicializarCarro(): Carro{
-    return new Carro(0, '', '', 0);
+    this.carroSeleccionado = new Carro(0, '', '', 0);
+    return this.carroSeleccionado;
   }
 
   public seleccionarCarro(objCarro: Carro): void{
@@ -36,8 +37,22 @@ export class CuerpoComponent implements OnInit {
   // ******** Logica del Negocio
 
   public crearCarro(): void{
-
+    this.carroSeleccionado.codigo = this.arregloCarros.length + 1;
+    this.arregloCarros.push(this.carroSeleccionado);
+    this.inicializarCarro();
   }
 
+  public actualizarCarro(): void{
+    this.inicializarCarro();
+  }
+
+  public borrarCarro(): void{
+    if(confirm('En realidad deseas borrar el carro ?')){
+      this.arregloCarros = this.arregloCarros.filter(
+        (objetoCarro) => objetoCarro != this.carroSeleccionado
+      );
+      this.inicializarCarro();
+    }
+  }
 
 }

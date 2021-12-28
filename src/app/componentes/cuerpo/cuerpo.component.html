@@ -1,30 +1,54 @@
 <div class="container-fluid">
   <div class="row mt-3">
     <div class="col-8 bg-light">
-      <ul class="list-group list-group-over list-group-striped">
-        <li class="list-group-item active">An active item</li>
-        <li class="list-group-item list-group-action py-1"><span class="textoPequeno">A second item</span></li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+      <ul class="list-group list-group-hover list-group-striped">
+        <li class="list-group-item text-success" (click)="inicializarCarro()">{{ titulo }}</li>
+
+        <li class="list-group-item list-group-action py-1" *ngFor="let miCarro of arregloCarros"
+          (click)="seleccionarCarro(miCarro)" [class.active]="miCarro == carroSeleccionado">
+          <i class="fas fa-check iconoVerde"></i>
+          <span class="textoPequeno">
+            {{ miCarro.placa }},
+            {{ miCarro.marca }},
+            {{ miCarro.modelo }}
+          </span>
+        </li>
+
       </ul>
     </div>
     <div class="col-4 bg-light">
       <form>
+
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <label for="placa" class="form-label">Placa</label>
+          <input type="text" class="form-control" id="placa" name="placa"
+          [(ngModel)]="carroSeleccionado.placa" />
         </div>
+
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="marca" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="marca" name="marca"
+          [(ngModel)]="carroSeleccionado.marca" />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+        <div class="mb-3">
+          <label for="modelo" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="modelo" name="modelo"
+          [(ngModel)]="carroSeleccionado.modelo" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-primary btn-sm"
+          *ngIf="carroSeleccionado.codigo == 0"
+          (click) = "crearCarro()">Crear</button>
+          <button type="button" class="btn btn-success btn-sm"
+          *ngIf="carroSeleccionado.codigo != 0"
+          (click) = "actualizarCarro()">Actualizar</button>
+          <button type="button" class="btn btn-danger btn-sm"
+          *ngIf="carroSeleccionado.codigo != 0"
+          (click) = "borrarCarro()">Eliminar</button>
+        </div>
+
       </form>
     </div>
   </div>
