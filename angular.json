@@ -27,9 +27,15 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -68,10 +74,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "taller06:build:production"
+              "browserTarget": "taller06:build:production",
+              "port": 8095
             },
             "development": {
-              "browserTarget": "taller06:build:development"
+              "browserTarget": "taller06:build:development",
+              "port": 8089
             }
           },
           "defaultConfiguration": "development"
